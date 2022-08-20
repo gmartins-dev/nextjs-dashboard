@@ -6,17 +6,18 @@ interface LayoutProps {
   title: string;
   subtitle: string;
   children?: any
-  
 }
 
 export default function Layout(props: LayoutProps) {
   return(
-    <div>
+    <div className='flex w-screen h-screen'>
       <Sidebar/>
-      <Header title={props.title} subtitle={props.subtitle}/>
-      <Content>
-        {props.children}
-      </Content>
+      <div className='flex flex-col w-full bg-gray-300 p-7 '>
+        <Header title={props.title} subtitle={props.subtitle}/>
+        <Content>
+          {props.children}
+        </Content>
+      </div>
     </div>
   )
 };

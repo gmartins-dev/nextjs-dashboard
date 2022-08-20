@@ -15,13 +15,16 @@
     "esModuleInterop": true,
     "module": "esnext",
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "resolveJsonModule": true
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "src/pages/index.tsx", "src/pages/_app.tsx"  ],
+    "**/*.tsx",
+    "src/pages/index.tsx",
+    "src/pages/_app.tsx"
+  ],
   "exclude": [
     "node_modules"
   ]
