@@ -12,7 +12,7 @@ export default function Sidebar() {
       <ul className="flex-grow">
         <SidebarItem url="/" text="Home" icon={IconHome}/>
 
-        <SidebarItem url="/adjustments" text="Configs" icon={IconAdjustments}/>
+        <SidebarItem url="/adjustments" text="Adjustments" icon={IconAdjustments}/>
 
         <SidebarItem url="/notifications" text="Notifications" icon={IconBell}/>
       </ul>
