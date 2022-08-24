@@ -5,7 +5,7 @@ export default function Authentication(){
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [type, setType] = useState('')
+  const [status, setStatus] = useState<'logged' | 'register'>('logged')
 
   return (
     <div>
@@ -18,8 +18,8 @@ export default function Authentication(){
         required={true}
       />
         <AuthInput
-        type="password"
         label="Password"
+        type="password"
         value={password}
         required={true}
         newValue={setPassword}
