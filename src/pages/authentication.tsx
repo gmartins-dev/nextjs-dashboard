@@ -1,18 +1,27 @@
 import { useState } from "react";
 import AuthInput from "../components/auth/AuthInput";
+import { IconWarning } from "../components/icons/index";
 
 export default function Authentication(){
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [status, setStatus] = useState<'logged' | 'register'>('logged')
+  const [error, setError] = useState(null)
 
   function handleSubmit() {
     if(status === 'logged'){
       console.log("loginnn")
+      showError("Login errorrrr")
     } else{
       console.log("registerrrr")
+      showError("Register errorrrr")
     }
+  }
+
+  function showError(errorMessage, time = 5000){
+    setError(errorMessage)
+    setTimeout(() => setError(null), time)
   }
 
   return (
@@ -28,6 +37,13 @@ export default function Authentication(){
         <h1 className="mb-5 text-3xl font-bold">
           {status === 'logged' ? "Please login to enter" : "Please register your account"}
         </h1>
+      {error ? ( 
+      <div className="flex items-center bg-red-400 text-white py-3 px-5 my-2 border border-red-700 rounded-lg">
+        {IconWarning()}
+        <span className="ml-3 text-sm">{error}</span>
+      </div>
+      ):false}
+     
         <AuthInput
           label="Email"
           type="email"
@@ -54,14 +70,14 @@ export default function Authentication(){
           <p className="mt-8">
             New here? create a new account.
             <a onClick={() => setStatus('register')} className="text-blue-500 hover:text-blue-700 font-semibold cursor-pointer">
-              Register
+            &nbsp;Register
             </a>
           </p>
         ):(
           <p className="mt-8">
           Already have a account?
           <a onClick={() => setStatus('logged')} className="text-blue-500 hover:text-blue-700 font-semibold cursor-pointer">
-            Login
+          &nbsp;Login
           </a>
         </p>
         )}
