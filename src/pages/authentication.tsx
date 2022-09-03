@@ -1,6 +1,7 @@
 import { useState } from "react";
 import AuthInput from "../components/auth/AuthInput";
 import { IconWarning } from "../components/icons/index";
+import useAuth from "../data/hook/useAuth";
 
 export default function Authentication(){
 
@@ -8,6 +9,7 @@ export default function Authentication(){
   const [password, setPassword] = useState('')
   const [status, setStatus] = useState<'logged' | 'register'>('logged')
   const [error, setError] = useState(null)
+  const {user, loginGoogle} = useAuth()
 
   function handleSubmit() {
     if(status === 'logged'){
@@ -63,7 +65,7 @@ export default function Authentication(){
           {status === 'logged' ? "Enter" : "Register"}
         </button>
         <hr className="w-full my-6 border-gray-300"/>
-        <button onClick={handleSubmit} className='w-full px-4 py-3 text-white bg-red-500 rounded-lg hover:bg-red-400'>
+        <button onClick={loginGoogle} className='w-full px-4 py-3 text-white bg-red-500 rounded-lg hover:bg-red-400'>
           {status === 'logged' ? "Enter with Google" : "Register with Google"}
         </button>
         {status === "logged" ? (
